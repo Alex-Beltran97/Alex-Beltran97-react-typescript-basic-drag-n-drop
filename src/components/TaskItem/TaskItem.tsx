@@ -27,7 +27,7 @@ const TaskItem = ({
       <Draggable draggableId={`${id}`} index={index}>
         {({ innerRef, draggableProps, dragHandleProps }) => (
           <article
-            className="p-2 border-solid border-2 border-black mb-3 text-[1.5rem] flex justify-between items-center rounded"
+            className="p-2 border-solid border-2 border-gray-400 mb-3 text-[1.5rem] flex justify-between items-center rounded hover:bg-gray-600 active:bg-gray-600"
             ref={innerRef}
             {...draggableProps}
             {...dragHandleProps}
@@ -41,7 +41,7 @@ const TaskItem = ({
                 onChange={handleChangeChecked}
               />
               <button
-                className="w-[1.65rem] h-[1.65rem] border-none bg-white text-[1.5rem] cursor-pointer flex items-center justify-center"
+                className="w-[1.65rem] h-[1.65rem] border-none text-[1.5rem] cursor-pointer flex items-center justify-center bg-inherit"
                 onClick={() => handleDeleteTasks(id)}
               >
                 ❌

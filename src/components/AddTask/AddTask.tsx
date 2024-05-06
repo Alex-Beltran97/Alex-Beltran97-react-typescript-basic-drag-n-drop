@@ -29,13 +29,13 @@ const AddTask = ({ handleAddTask, ...restProps }: Props) => {
         onSubmit={handleSubmit}
       >
         <input
-          className="h-[2.8rem] w-[80%] p-[.5rem] border-2 border-black rounded"
+          className="h-[2.8rem] w-[80%] p-[.5rem] border-2 border-gray-400 rounded bg-inherit"
           type="text"
           name="task"
           placeholder="Add task here..."
         />
         <button
-          className="h-[2.8rem] w-[2.8rem] text-[3rem] flex items-center justify-center font-light cursor-pointer border-2 border-black rounded"
+          className="h-[2.8rem] w-[2.8rem] text-[3rem] flex items-center justify-center font-light cursor-pointer border-2 border-gray-400 rounded hover:bg-gray-600"
           type="submit"
         >
           +
