@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Todo } from '../../types';
 import { Draggable } from '@hello-pangea/dnd';
-import './style.css';
 
 type Props = {
   todo: Todo;
@@ -14,7 +13,7 @@ const TaskItem = ({
   handleDeleteTasks,
   handleUpdateStatus,
   todo: { id, desc, status },
-  index
+  index,
 }: Props) => {
   const [checked, setChecked] = useState<boolean>(status);
 
@@ -25,22 +24,32 @@ const TaskItem = ({
 
   return (
     <>
-      <Draggable draggableId={ `${ id }` } index={ index }>
-        { ({ innerRef, draggableProps, dragHandleProps }) => (
+      <Draggable draggableId={`${id}`} index={index}>
+        {({ innerRef, draggableProps, dragHandleProps }) => (
           <article
-            className="task-container"
-            ref={ innerRef }
-            { ...draggableProps }
-            { ...dragHandleProps }
+            className="p-2 border-solid border-2 border-black mb-3 text-[1.5rem] flex justify-between items-center rounded"
+            ref={innerRef}
+            {...draggableProps}
+            {...dragHandleProps}
           >
-            <p className={checked ? "checked" : ""}>{ desc }</p>
-            <div className="task-container-panel">
-              <input type="checkbox" checked={ checked } onChange={ handleChangeChecked } />
-              <button onClick={() => handleDeleteTasks(id) }>❌</button>
+            <p className={checked ? 'line-through' : ''}>{desc}</p>
+            <div className="flex gap-2">
+              <input
+                className="w-[1.65rem] h-[1.65rem]"
+                type="checkbox"
+                checked={checked}
+                onChange={handleChangeChecked}
+              />
+              <button
+                className="w-[1.65rem] h-[1.65rem] border-none bg-white text-[1.5rem] cursor-pointer flex items-center justify-center"
+                onClick={() => handleDeleteTasks(id)}
+              >
+                ❌
+              </button>
             </div>
           </article>
-        ) }
-      </Draggable>      
+        )}
+      </Draggable>
     </>
   );
 };

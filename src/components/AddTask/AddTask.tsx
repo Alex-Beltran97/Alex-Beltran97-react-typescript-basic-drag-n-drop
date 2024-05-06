@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import './style.css';
 
 type Props = {
   handleAddTask: (desc: string) => void;
@@ -7,31 +6,43 @@ type Props = {
 };
 
 const AddTask = ({ handleAddTask, ...restProps }: Props) => {
-
   const formRef = useRef(null);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    const form = (formRef.current as unknown) as HTMLFormElement;
+    const form = formRef.current as unknown as HTMLFormElement;
     const formData = new FormData(form);
-    const task = formData.get('task')?.toString() ?? ''; 
-    
+    const task = formData.get('task')?.toString() ?? '';
+
     handleAddTask(task);
 
     form.reset();
   };
 
-  return <>
-    <form
-      className="form" { ...restProps }
-      ref={ formRef }
-      onSubmit={ handleSubmit }
-    >
-      <input className="form-input" type="text" name="task" placeholder="Add task here..." />
-      <button className="form-input-button" type="submit">+</button>
-    </form>
-  </>;
+  return (
+    <>
+      <form
+        className="mt-1 gap-1"
+        {...restProps}
+        ref={formRef}
+        onSubmit={handleSubmit}
+      >
+        <input
+          className="h-[2.8rem] w-[80%] p-[.5rem] border-2 border-black rounded"
+          type="text"
+          name="task"
+          placeholder="Add task here..."
+        />
+        <button
+          className="h-[2.8rem] w-[2.8rem] text-[3rem] flex items-center justify-center font-light cursor-pointer border-2 border-black rounded"
+          type="submit"
+        >
+          +
+        </button>
+      </form>
+    </>
+  );
 };
 
 export default AddTask;
