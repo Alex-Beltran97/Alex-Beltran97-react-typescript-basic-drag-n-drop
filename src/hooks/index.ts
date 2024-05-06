@@ -13,9 +13,11 @@ export const useTask = () => {
   const handleAddTask = (desc: string): void => {
     const todosCopy: Todo[] = [...todos];
 
+    if (!desc.trim()) return;
+
     todosCopy.push({
       id: Date.now(),
-      desc,
+      desc: desc.trim(),
       status: false
     });
 
